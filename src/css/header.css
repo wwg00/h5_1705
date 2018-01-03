@@ -1,0 +1,107 @@
+.container { width: 1090px; margin: 0 auto; }
+
+nav { line-height: 30px; background: #F2F2F2; z-index: 100; }
+
+nav .tonavleft1 { display: inline-block; }
+
+nav .tonavleft1 span { padding-right: 10px; }
+
+nav .tonavleft1 a { border-right: 1px solid #ccc; padding: 0 10px; text-decoration: none; }
+
+nav .tonavleft2 { display: inline-block; padding-left: 10px; }
+
+nav .tonavleft2 a { text-decoration: none; position: relative; padding-left: 10px; position: relative; }
+
+nav .tonavleft2 a i { display: inline-block; height: 108px; width: 108px; position: absolute; left: -20px; top: 30px; border: 1px solid #ccc; display: none; background: url("../img/1.fw.png") -200px 0; z-index: 10; }
+
+nav .tonavleft2 a i::before, nav .tonavleft2 a i::after { content: ''; position: absolute; top: -20px; left: 35px; border: 10px solid transparent; border-bottom-color: #ccc; }
+
+nav .tonavleft2 a i::after { top: -18px; border-bottom-color: #fff; }
+
+nav .tonavleft2 a:hover i { display: block; }
+
+nav .tonavleft2 span { position: absolute; left: 0; top: 1px; color: red; }
+
+nav .tonavright { float: right; }
+
+nav .tonavright > li { float: left; }
+
+nav .tonavright > li:first-child span { color: red; }
+
+nav .tonavright > li:hover .dropdown-menu { display: block; }
+
+nav .tonavright > li > a { border-right: 1px solid #ccc; padding: 0 10px; text-decoration: none; }
+
+nav .tonavright > li > a:hover { color: red; }
+
+header .container { height: 100px; position: relative; }
+
+header .container > a { background: url("../img/1.fw.png") -400px 0; height: 42px; display: inline-block; width: 206px; position: absolute; left: 0; top: 20px; }
+
+header .container .toheadercenter { position: absolute; left: 343px; top: 24px; }
+
+header .container .toheadercenter .tosearch { border: 1px solid #333333; padding: 5px 10px; }
+
+header .container .toheadercenter .tosearch i { color: #E7E7E7; font-size: 12px; }
+
+header .container .toheadercenter .tosearch input { width: 423px; height: 24px; }
+
+header .container .toheadercenter .tosearch span { position: absolute; left: 89%; top: 0; width: 50px; height: 36px; background: #151515; font-size: 19px; text-align: center; line-height: 36px; }
+
+header .container .toheadercenter ul li { float: left; }
+
+header .container .toheadercenter ul li a { padding: 0 10px; text-decoration: none; border-right: 1px solid #ccc; }
+
+header .container .toheaderright { position: absolute; right: 0; top: 33px; font-size: 13px; padding: 5px; border-radius: 5px; border: 1px solid #ccc; width: 108px; height: 34px; font-size: 20px; }
+
+header .container .toheaderright:hover { background: #F2F2F2; }
+
+header .container .toheaderright i { display: inline-block; vertical-align: middle; padding: 0 8px; }
+
+header .container .toheaderright span { font-size: 14px; }
+
+.tabbox .container .tocat { float: left; float: left; height: 40px; width: 160px; background: #151515; color: #fff; font-size: 14px; text-align: center; padding-left: 0; overflow: visible; }
+
+.tabbox .container .tocat .toplevel { display: inline-block; height: 40px; line-height: 40px; width: 160px; text-align: center; border-bottom: 2px solid #151515; }
+
+.tabbox .container .tocat:hover .menu { position: relative; display: block; z-index: 10; }
+
+.tabbox .container .tocat .menu { border-bottom: 1px solid #000; margin-top: -4px; background: #2d2d2d; display: none; }
+
+.tabbox .container .tocat .menu li { padding-left: 10px; width: 150px; cursor: pointer; text-align: left; border-bottom: 1px solid #ccc; position: relative; }
+
+.tabbox .container .tocat .menu li:hover .m-ctgcard { display: block; }
+
+.tabbox .container .tocat .menu li .m-ctgcard { transition: height 0.4s; position: absolute; z-index: 75; top: 0; left: 160px; display: none; width: 930px; overflow: hidden; max-height: 399px; height: 399px; background: #fff; border: 1px solid #333; border-width: 0 1px 1px 0; text-align: left; color: #333; cursor: auto; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist { margin: 10px 20px 20px 20px; width: 610px; max-height: 370px; overflow: hidden; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .ctgnamebox a { display: inline-block; height: 14px; line-height: 14px; padding: 0 8px 0 10px; margin-top: 12px; border-left: 1px solid #ccc; font-size: 13px; color: #666; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .ctgnamebox .f-fcred3 { color: #e31436; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .item { display: inline-block; padding: 0; margin: 0 25px 10px 5px; vertical-align: top; width: 275px; height: auto; line-height: normal; overflow: hidden; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .item .title { height: 34px; line-height: 34px; font-size: 14px; font-weight: bold; border-bottom: 1px solid #eaeaea; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .item .title a.cat2 { display: inline; color: #333; text-align: left; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .ctgnamebox { margin-left: -8px; font-size: 0; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .m-ctgtbl { width: 100%; font-size: 0; }
+
+.tabbox .container .tocat .menu li .m-ctgcard .m-ctglist .m-ctgtbl .litd { float: left; width: 50%; vertical-align: top; }
+
+.tabbox .container .tocat .menu li > a { display: block; padding-left: 20px; color: #fff; text-decoration: none; height: 40px; line-height: 40px; }
+
+.tabbox .container .tocat .menu li > a span { padding-left: 10px; }
+
+.tabbox .container .tocat .menu li > a::before { content: ""; background: url("../img/1.fw.png") -400px -100px; display: inline-block; width: 20px; height: 20px; padding-left: 20px; color: #fff; }
+
+.tabbox .container .tocat .menu li i { position: absolute; left: 130px; top: 12px; }
+
+.tabbox .container .functab { float: right; position: relative; z-index: 72; height: 40px; float: left; padding-left: 20px; }
+
+.tabbox .container .functab li { float: left; float: left; height: 40px; overflow: hidden; padding: 0 20px; }
+
+.tabbox .container .functab li a { text-decoration: none; display: block; text-align: center; font-size: 15px; font-weight: bold; line-height: 40px; }
