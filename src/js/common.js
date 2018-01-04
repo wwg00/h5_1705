@@ -183,10 +183,10 @@ var cookie = {
 	 * @param {[String]} path    [路径]
 	 */
 	set:function(name,val,expires,path){
-		var str = name+'='+value;
+		var str = name+'='+val;
 
 		// 传入有效期时
-		if(expire){
+		if(expires){
 			str += ';expires=' + expires.toUTCString();
 		}
 

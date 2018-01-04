@@ -34,11 +34,12 @@
                     }  
                 }
       .cartbox #carlist{
-        height: 560px;
+        // height: 560px;
         border:1px solid #ccc;
       } 
      .cartbox #carlist>div{
           height: 120px;
+          width:100%;
           border-bottom: 1px solid #ccc;
 
      }
@@ -63,7 +64,7 @@
         overflow:hidden;
         /*height: 20px;*/
         display:inline-block;
-        padding-left: 103px;
+        padding-left: 16px;
 
 
   }

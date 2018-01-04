@@ -24,24 +24,42 @@
 
 
       }
+      var img='';
+      var price='';
+      var name='';
       $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
 
            data.forEach(function(item){
                if(item.id==id){
                 // console.log(item.id);
-                   $('.goodimg').html(`<img src="../${item.img}" data-big="../${item.img}"  />`)
+                   $('.goodimg').html(`<img src="../${item.img}" data-big="../${item.img}"  />`);
+                   right(item);
+                   qtybtn();
+                   img=item.img;
+                   price=item.price;
+                   name=item.name;
+
                }
            });
-      }});
+           
+
+      }
+  });
        
 
 
-
-       //右边样式;
-      $('.qty').html(`<span>数量:</span><p class="btngroup clearfix"> <button    id="btn1" class="button"><strong>+</strong></button><button id="btn2"  class="button"><strong>0</strong></button><button id="btn3" class="button" >-</button>  </p>`)
-       //加减按钮
-             
-             var count=1;  
+     function right(item){
+        //右边样式;
+      $('.state').html(`<p class="goodname">${item.name}</p>
+                <p class="price"><span>价格:</span>${item.price}</p>
+                <p class="qty"></p>
+                <button class="buybtn"><a>加入购物车</a></button>`);
+      $('.qty').html(`<span>数量:</span><p class="btngroup clearfix"> <button  id="btn1" class="button"><strong>+</strong></button><button id="btn2"  class="button"><strong>0</strong></button><button id="btn3" class="button" >-</button>  </p>`)
+     }
+       var count=1;
+       function qtybtn(){
+               //加减按钮
+                 
             var adult=document.getElementById("btn1");  
             var adcount=document.getElementById("btn2");  
             var adco=document.getElementById("btn3");  
@@ -75,7 +93,9 @@
        }  
                  
     } 
-       
+      
+       }
+   
       $('.fix').load('../html/slip.html',function(){
 
          setTimeout(function(){
@@ -106,12 +126,46 @@
                     onEnd: function(){ //结束回调 
                         console.log('加入成功！');
                         this.destory(); //移除dom 
+                        // console.log([{id:id,qty:count}]);
+                        // 
+                        //点击购物车获取cookie;
+                        if(cookie.get('good')!=''){
+
+                            var val=JSON.parse(cookie.get('good'));
+                            var res=false;
+                            for(var i=0;i<val.length;i++){
+                                if(val[i].id==id){
+                                    val[i].qty+=count;
+                                    // val[i].price=price;
+                                    // val[i].name=name;
+                                    // val[i].img=img;
+                                   res=true;
+                                    break;
+                                }
+                             
+                            }
+                            if(!res){
+                              val.unshift({id:id,qty:count,price:price,img:img,name:name});
+
+                            }
+   
+                           val=JSON.stringify(val);
+                        }else{
+                            var val=JSON.stringify([{id:id,qty:count,price:price,img:img,name:name}]);
+                        }
+                        
+                         var now= new Date();
+                         
+                         now.setDate(now.getDate()+7);
+
+                         console.log(now);
+                        cookie.set('good',val,now,'/');
                     } 
                 }); 
             });
 
          }, 50)
-       
+
       });
 
        

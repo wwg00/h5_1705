@@ -6,7 +6,7 @@
 
 .detailbox .container .state { display: inline-block; color: black; position: absolute; font-size: 24px; width: 100%; }
 
-.detailbox .container .state .goodname { font-size: 48px; height: 60px; margin: 10px; }
+.detailbox .container .state .goodname { font-size: 20px; height: 60px; margin: 10px; }
 
 .detailbox .container .state .price { margin: 20px; color: #e31436; }
 
