@@ -8,37 +8,6 @@
          
     });
 
-    //飞入购物车;
-//     $(function() { 
-
-//     var offset = $(".cart").offset();
-//      console.log(offset);
-
-//     $(".buy").click(function(event){ 
-         
-//         var addcar = $(this); 
-//         var img = addcar.parents('li').find('.proImg').attr('src');
-        
-//         var flyer = $('<img class="u-flyer" src="'+img+'">');  
-//         flyer.fly({ 
-//             start: { 
-//                 left: event.pageX, //开始位置（必填）#fly元素会被设置成position: fixed 
-//                 top: event.pageY //开始位置（必填） 
-//             }, 
-//             end: { 
-//                 left: offset.left+10, //结束位置（必填） 
-//                 top: offset.top+10, //结束位置（必填） 
-//                 width: 0, //结束时宽度 
-//                 height: 0 //结束时高度 
-//             }, 
-//             onEnd: function(){ //结束回调 
-//                 $("#msg").show().animate({width: '250px'}, 200).fadeOut(1000); //提示信息 
-//                 addcar.css("cursor","default").removeClass('orange').unbind('click'); 
-//                 this.destory(); //移除dom 
-//             } 
-//         }); 
-//     }); 
-// }); 
     
 
      $(function(){
@@ -70,5 +39,26 @@
                     } 
                 }); 
             }); 
+           
+                
+
+        });
+ //写入数据;
+        $(function(){
+
+                    $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
+
+                        $('.carlist>li').each(function(i){
+                            console.log(data[i].imgurl)
+                            // var img=;
+                            console.log(i,data[i])
+                            console.log(data[i]['imgurl']);
+                             $(this).html('<a href=""><img src="'+data[i].imgurl+'"  alt="" class="listicon"/><img src="img/g6.jpg" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> BEATUY SHINE 两件装 自然堂</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$45</div><a  class="buy">立即购买</a></div>')
+                        })
+
+                    }
+                });
         })
+                    
+    
 })(jQuery);

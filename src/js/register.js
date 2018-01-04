@@ -1,5 +1,17 @@
 ;(function($){
+
   $(function(){
+
+
+    var result;
+   $.get({
+          url: '../api/data/username.json',
+          success: function(data){
+               
+               result=data;
+              
+                }
+              });
     // $('.header').load('../html/header.html');
     $('.footer').load('../html/footer.html');
     var res=[false];
@@ -11,12 +23,25 @@
             $('#tip').html('&times;用户名格式不对');
             res[1]=false;
         }else{
-            res[1]=true;
+             
+             result.forEach(function(item){
+                 if(item.name==$val){
+               
+                    $('#tip').html('&times;名字已被使用');
+                    console.log($('#tip').html());
+                 res[1]=false;
+                 }else{
+                    res[1]=true;
+                 }
+               })
+         
+     
+          
         }
-        $('#username').focus(function(){
-             $('#tip').html('');
-             $('#username').val('');
-        })
+        // $('#username').focus(function(){
+        //      $('#tip').html('');
+        //      $('#username').val('');
+        // })
     });
      $('#phone').blur(function(){
         // console.log(333);
@@ -28,13 +53,14 @@
         }else{
             res[2]=true;
         }
-        $('#phone').focus(function(){
-             $('#tip').html('');
-             $('#phone').val('');
-        })
+        // $('#phone').focus(function(){
+        //      $('#tip').html('');
+        //      $('#phone').val('');
+        // })
     });
 
      $('#password').blur(function(){
+
         var reg=/^\S{1,20}$/;
         var $val=$('#password').val();
         if(!reg.test($val)){
@@ -43,10 +69,10 @@
         }else{
             res[0]=true;
         }
-        $('#password').focus(function(){
-             $('#tip').html('');
-             $('#password').val('');
-        });
+        // $('#password').focus(function(){
+        //      $('#tip').html('');
+        //      $('#password').val('');
+        // });
      });
       $('#confirm_pwd').blur(function(){
       
@@ -57,10 +83,10 @@
         }else{
             res[3]=true;
         }
-        $('#confirm_pwd').focus(function(){
-             $('#tip').html('');
-             $('#confirm_pwd').val('');
-        });
+        // $('#confirm_pwd').focus(function(){
+        //      $('#tip').html('');
+        //      $('#confirm_pwd').val('');
+        // });
      });
       $('button').click(function(){
         var rest=true;
@@ -70,11 +96,15 @@
               }
            }
            if(rest){
-            console.log(res);
+            // console.log(res);
+             location.href="../html/enter.html";
             
            }
        
-      })
+      });
+
+
   })
     
+
 })(jQuery);

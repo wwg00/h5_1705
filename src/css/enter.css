@@ -1,0 +1,3 @@
+html, body { height: 100%; }
+
+article { width: 100%; height: 520px; margin: 0 auto; background: url("../img/beijing.jpg") no-repeat; position: relative; background-position: center top; }
