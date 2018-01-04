@@ -1,6 +1,6 @@
 .cartbox .container { font-size: 20px; height: 100%; padding: 0; border: 1px solid #ccc; position: relative; margin-top: 1px; }
 
-.cartbox .button { background-color: white; border: 1px solid #ACB4BE; color: #536277; display: inline-block; width: 12px; height: 20px; float: right; font-size: 10px; text-align: center; text-decoration: none; }
+.cartbox .button { background-color: white; border: 1px solid #ACB4BE; color: #536277; display: inline-block; width: 18px; height: 20px; float: right; font-size: 10px; text-align: center; text-decoration: none; }
 
 .cartbox .button:nth-child(3) { border-bottom-left-radius: 10px; border-top-left-radius: 10px; border-right: 0; color: #A9B1BB; }
 

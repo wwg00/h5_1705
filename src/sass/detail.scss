@@ -18,6 +18,7 @@
             color:black;
             position:absolute;
              font-size:24px;
+             width: 100%;
             .goodname{
                 font-size:48px;
                 height:60px; 
@@ -30,9 +31,39 @@
             }
             .qty{
                 margin:20px;
+                position:relative;
+                .btngroup{
+                    position:absolute;
+                    left:100px;
+                    top:0;
+                }
+                .button {  
+                    background-color: white;  
+                    border: 1px solid #ACB4BE;  
+                    color: #536277;  
+                    display: inline-block;
+                    width: 25px;
+                    height: 20px;  
+                    float: right;  
+                    font-size: 10px;  
+                    
+                    text-align: center;  
+                    text-decoration: none;  
+                    &:nth-child(3) {  
+                        border-bottom-left-radius: 10px;  
+                        border-top-left-radius: 10px;  
+                        border-right: 0;  
+                        color: #A9B1BB;  
+                    }  
+                    &:nth-child(1) {  
+                        border-bottom-right-radius: 10px;  
+                        border-top-right-radius: 10px;  
+                        border-left: 0;  
+                    }  
+                }
 
             }
-            button{
+            .buybtn{
                 display:block;
                 margin:20px;
                 background:#e31436;

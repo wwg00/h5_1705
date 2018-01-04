@@ -4,14 +4,22 @@
 
 .detailbox .container .goodimg img { width: 100%; }
 
-.detailbox .container .state { display: inline-block; color: black; position: absolute; font-size: 24px; }
+.detailbox .container .state { display: inline-block; color: black; position: absolute; font-size: 24px; width: 100%; }
 
 .detailbox .container .state .goodname { font-size: 48px; height: 60px; margin: 10px; }
 
 .detailbox .container .state .price { margin: 20px; color: #e31436; }
 
-.detailbox .container .state .qty { margin: 20px; }
+.detailbox .container .state .qty { margin: 20px; position: relative; }
 
-.detailbox .container .state button { display: block; margin: 20px; background: #e31436; height: 60px; border-radius: 5%; }
+.detailbox .container .state .qty .btngroup { position: absolute; left: 100px; top: 0; }
 
-.detailbox .container .state button a { display: block; width: 100%; text-decoration: none; }
+.detailbox .container .state .qty .button { background-color: white; border: 1px solid #ACB4BE; color: #536277; display: inline-block; width: 25px; height: 20px; float: right; font-size: 10px; text-align: center; text-decoration: none; }
+
+.detailbox .container .state .qty .button:nth-child(3) { border-bottom-left-radius: 10px; border-top-left-radius: 10px; border-right: 0; color: #A9B1BB; }
+
+.detailbox .container .state .qty .button:nth-child(1) { border-bottom-right-radius: 10px; border-top-right-radius: 10px; border-left: 0; }
+
+.detailbox .container .state .buybtn { display: block; margin: 20px; background: #e31436; height: 60px; border-radius: 5%; }
+
+.detailbox .container .state .buybtn a { display: block; width: 100%; text-decoration: none; }

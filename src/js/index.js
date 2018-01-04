@@ -16,8 +16,9 @@
                         console.log($('.carlist>li'));
 
                         $('.carlist>li').each(function(i){
-                           var img=data[i].imgurl;
-                             $(this).html('<a href="html/detail.html"><img src="'+img+'"  alt="" class="listicon"/><img src="img/g6.jpg" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> BEATUY SHINE 两件装 自然堂</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$45</div><a  class="buy buybtn">加入购物车</a></div>')
+                             $(this).attr('id',data[i].id);
+                             //deenter用于点击事件detail入口;
+                             $(this).html('<a class="deenter"><img src="'+data[i].imgurl+'"  alt="" class="listicon"/><img src="'+data[i].img+'" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> BEATUY SHINE 两件装 自然堂</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$'+data[i].price+'</div><a  class="buy buybtn">加入购物车</a></div>')
                         });
 
                         //飞入购物车;要写在ajax回调之后;
@@ -52,15 +53,14 @@
             });
 
             /*------------------------------------*/ 
+
+             $('.carlist').on('click','li .deenter',function(){
+                   location.href="html/detail.html?id="+$(this).parents('li').attr('id');
+              });
                     }
                 });
         });
-         $(function(){
 
-           
-                
-
-        });
                     
     
 })(jQuery);
