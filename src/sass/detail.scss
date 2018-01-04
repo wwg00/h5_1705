@@ -1,0 +1,49 @@
+.detailbox{
+    .container{
+        position:relative;
+        .goodimg{
+            width: 330px;
+            // height: 330px;
+            border:1px solid #ccc;
+            // padding:10px;
+            position:relative;
+            display:inline-block;
+            img{
+                width: 100%;
+            }
+
+        }
+        .state{
+            display:inline-block;
+            color:black;
+            position:absolute;
+             font-size:24px;
+            .goodname{
+                font-size:48px;
+                height:60px; 
+                
+                margin:10px;
+            }
+            .price{
+                margin:20px;
+                color:#e31436;
+            }
+            .qty{
+                margin:20px;
+
+            }
+            button{
+                display:block;
+                margin:20px;
+                background:#e31436;
+                height:60px;
+                border-radius:5%; 
+                a{
+                    display:block;
+                    width: 100%;
+                    text-decoration:none;
+                }
+            }
+        }
+    }
+}

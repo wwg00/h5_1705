@@ -1,0 +1,17 @@
+.detailbox .container { position: relative; }
+
+.detailbox .container .goodimg { width: 330px; border: 1px solid #ccc; position: relative; display: inline-block; }
+
+.detailbox .container .goodimg img { width: 100%; }
+
+.detailbox .container .state { display: inline-block; color: black; position: absolute; font-size: 24px; }
+
+.detailbox .container .state .goodname { font-size: 48px; height: 60px; margin: 10px; }
+
+.detailbox .container .state .price { margin: 20px; color: #e31436; }
+
+.detailbox .container .state .qty { margin: 20px; }
+
+.detailbox .container .state button { display: block; margin: 20px; background: #e31436; height: 60px; border-radius: 5%; }
+
+.detailbox .container .state button a { display: block; width: 100%; text-decoration: none; }

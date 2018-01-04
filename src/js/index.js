@@ -9,14 +9,25 @@
     });
 
     
+ //写入数据;
+        $(function(){
 
-     $(function(){
-            var cartLeft = $('.cart').offset().left;  // 获取a标签距离屏幕顶端的距离(因为fly插件的start开始位置是根据屏幕可视区域x，y来计算的，而不是根据整个文档的x，y来计算的)
+                    $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
+                        console.log($('.carlist>li'));
+
+                        $('.carlist>li').each(function(i){
+                           var img=data[i].imgurl;
+                             $(this).html('<a href="html/detail.html"><img src="'+img+'"  alt="" class="listicon"/><img src="img/g6.jpg" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> BEATUY SHINE 两件装 自然堂</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$45</div><a  class="buy buybtn">加入购物车</a></div>')
+                        });
+
+                        //飞入购物车;要写在ajax回调之后;
+                        var cartLeft = $('.cart').offset().left;  // 获取a标签距离屏幕顶端的距离(因为fly插件的start开始位置是根据屏幕可视区域x，y来计算的，而不是根据整个文档的x，y来计算的)
             var cartTop = $('.cart').offset().top- $(document).scrollTop(); // 获取a标签的y坐标
 
 　　　　　　 
             
             $(".buybtn").click(function(event){ 
+                
                  var btnLeft = $(this).offset().left ; 
 　　　　　　  var btnTop = $(this).offset().top- $(document).scrollTop();
                 var addcar = $(this); 
@@ -38,27 +49,18 @@
                         this.destory(); //移除dom 
                     } 
                 }); 
-            }); 
+            });
+
+            /*------------------------------------*/ 
+                    }
+                });
+        });
+         $(function(){
+
            
                 
 
         });
- //写入数据;
-        $(function(){
-
-                    $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
-
-                        $('.carlist>li').each(function(i){
-                            console.log(data[i].imgurl)
-                            // var img=;
-                            console.log(i,data[i])
-                            console.log(data[i]['imgurl']);
-                             $(this).html('<a href=""><img src="'+data[i].imgurl+'"  alt="" class="listicon"/><img src="img/g6.jpg" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> BEATUY SHINE 两件装 自然堂</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$45</div><a  class="buy">立即购买</a></div>')
-                        })
-
-                    }
-                });
-        })
                     
     
 })(jQuery);
