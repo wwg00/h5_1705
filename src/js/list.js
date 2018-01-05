@@ -1,9 +1,8 @@
-  (function($){
+ (function($){
     $(function(){
             console.log(333);
-          $('.header').load('html/header.html');
-         $('.carousel').lxCarousel({imgs:['img/g1.jpg','img/g2.jpg','img/g3.jpg','img/g4.jpg'],width:1920,height:400,type:'fade',buttons:true});
-         $('.footer').load('html/footer.html');
+          $('.header').load('../html/header.html');
+         $('.footer').load('../html/footer.html');
 
          
     });
@@ -18,7 +17,7 @@
                         $('.carlist>li').each(function(i){
                              $(this).attr('id',data[i].id);
                              //deenter用于点击事件detail入口;
-                             $(this).html('<a class="deenter"><img src="'+data[i].imgurl+'"  alt="" class="listicon"/><img src="'+data[i].img+'" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> '+data[i].name+'</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$'+data[i].price+'</div><a  class="buy buybtn">加入购物车</a></div>')
+                             $(this).html('<a class="deenter"><img src="../'+data[i].imgurl+'"  alt="" class="listicon"/><img src="../'+data[i].img+'" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> '+data[i].name+'</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$'+data[i].price+'</div><a  class="buy buybtn">加入购物车</a></div>')
                         });
 
                         //飞入购物车;要写在ajax回调之后;
@@ -55,10 +54,13 @@
             /*------------------------------------*/ 
 
              $('.carlist').on('click','li .deenter',function(){
-                   location.href="html/detail.html?id="+$(this).parents('li').attr('id');
+                   location.href="../html/detail.html?id="+$(this).parents('li').attr('id');
               });
                     }
                 });
+
+
+
         });
 
                     

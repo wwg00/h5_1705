@@ -52,6 +52,7 @@
   .cartbox #carlist div div{
       float:left;
       font-size: 12px;
+      width: 300px;
 
   }
   .cartbox #carlist div div h4{
@@ -64,7 +65,7 @@
         overflow:hidden;
         /*height: 20px;*/
         display:inline-block;
-        padding-left: 16px;
+        padding-left: 102px;
 
 
   }
@@ -87,7 +88,7 @@
 
   }
   .cartbox #carlist div .tprice  p:first-child{
-         text-decoration: line-through;
+         // text-decoration: line-through;
   }
   .cartbox #carlist div .tprice  p:last-child{
      color:#228D46;
