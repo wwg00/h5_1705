@@ -1,8 +1,8 @@
-;(function($){
-   $(function(){
-    //load后回调不一定加载完??先用延时器;
-      
-      $('.footer').load('../html/footer.html');
+
+
+require(['config'],function(){
+  require(['jquery','fly','gdszoom','common'],function($){
+    $('.footer').load('../html/footer.html');
       // $('.state').html(``)
       
       //根据id获取数据;
@@ -185,7 +185,5 @@
           'data-big':$(this).attr('data-big') || this.src
         });
        })
-       
-       
-   })
-})(jQuery);
+  })
+})

@@ -1,7 +1,8 @@
-;(function($){
-    $(function(){
+ 
 
-        $('.footer').load('../html/footer.html');
+ require(['config'],function(){
+      require(['jquery','common'],function($){
+            $('.footer').load('../html/footer.html');
         $('.header').load('../html/header.html');
 
         //加减按钮
@@ -143,5 +144,5 @@
            //  now.setDate(now.getDate()+7)
            //  cookie.set('sum',total,now,'/');
         }
-    })
-})(jQuery);
+      });
+ })

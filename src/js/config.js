@@ -6,10 +6,12 @@ require.config({
 	paths:{
 		'jquery':'../lib/jquery-3.2.1',
 		
-		'gdszoom':'../lib/jquery.gdsZoom/jquery.gdsZoom'
+		'gdszoom':'../lib/jquery-gdsZoom/jquery.gdsZoom',
+		'fly':'../lib/jquery.fly.min'
 	},
 	shim:{
 		// 设置依赖
-		gdszoom:['jquery']
+		gdszoom:['jquery'],
+		fly:['jquery']
 	}
 });
