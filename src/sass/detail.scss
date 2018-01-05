@@ -1,6 +1,14 @@
 .detailbox{
     .container{
         position:relative;
+        .smallList{
+            img{
+                width:64px;
+                &:hover{
+                    border:1px solid blue;
+                }
+            } 
+        }
         .goodimg{
             width: 330px;
             // height: 330px;

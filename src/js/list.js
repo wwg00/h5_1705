@@ -10,10 +10,10 @@
     
  //写入数据;
         $(function(){
-
+                    var goodlist;
                     $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
                         console.log($('.carlist>li'));
-
+                          goodlist=data;
                         $('.carlist>li').each(function(i){
                              $(this).attr('id',data[i].id);
                              //deenter用于点击事件detail入口;
@@ -27,7 +27,16 @@
 　　　　　　 
             
             $(".buybtn").click(function(event){ 
-                
+
+                //找到id;
+                var good;
+                var id=$(this).parents('li').attr('id');
+                 goodlist.forEach(function(item){
+                      if(item.id==id){
+                         good=item;
+                      }
+                 })
+                /*----------------------------*/
                  var btnLeft = $(this).offset().left ; 
 　　　　　　  var btnTop = $(this).offset().top- $(document).scrollTop();
                 var addcar = $(this); 
@@ -47,6 +56,38 @@
                     onEnd: function(){ //结束回调 
                         console.log('加入成功！');
                         this.destory(); //移除dom 
+
+                         if(cookie.get('good')!=''){
+
+                            var val=JSON.parse(cookie.get('good'));
+                            var res=false;
+                            for(var i=0;i<val.length;i++){
+                                if(val[i].id==id){
+                                    val[i].qty+=1;
+                                    // val[i].price=price;
+                                    // val[i].name=name;
+                                    // val[i].img=img;
+                                   res=true;
+                                    break;
+                                }
+                             
+                            }
+                            if(!res){
+                              val.unshift({id:id,qty:1,price:good.price,img:good.img,name:good.name});
+
+                            }
+   
+                           val=JSON.stringify(val);
+                        }else{
+                            var val=JSON.stringify([{id:id,qty:1,price:good.price,img:good.img,name:good.name}]);
+                        }
+                        
+                         var now= new Date();
+                        
+                         now.setDate(now.getDate()+7);
+
+                         // console.log(now);
+                        cookie.set('good',val,now,'/');
                     } 
                 }); 
             });

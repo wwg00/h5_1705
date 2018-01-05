@@ -1,5 +1,9 @@
 .detailbox .container { position: relative; }
 
+.detailbox .container .smallList img { width: 64px; }
+
+.detailbox .container .smallList img:hover { border: 1px solid blue; }
+
 .detailbox .container .goodimg { width: 330px; border: 1px solid #ccc; position: relative; display: inline-block; }
 
 .detailbox .container .goodimg img { width: 100%; }

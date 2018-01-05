@@ -24,7 +24,8 @@
             // var box=document.createElement('div');
         var $total=$('.total');
          // var total=document.getElementsByClassName('total')[0];
-       $box.html(`<img src="${item.img}" ><div><h4>${item.name}</h4><p>ID:${item.id}</p><P>Size:Default</P></div><p class="btngroup"><button    class="btn1 button" ><strong>+</strong></button><button class="btn2 button" ><strong>0</strong></button><button class="btn3 button"  >-</button>  </p><h2 class="price"><p>${item.price}</p></h2><h2 class="tprice"><p>${(item.price*item.qty).toFixed(2)}</p></h2><h2 class="remove">&times;</h2>`)
+        
+       $box.html(`<img src="../${item.img}" ><div><h4>${item.name}</h4><p>ID:${item.id}</p><P>Size:Default</P></div><p class="btngroup"><button    class="btn1 button" ><strong>+</strong></button><button class="btn2 button" ><strong>0</strong></button><button class="btn3 button"  >-</button>  </p><h2 class="price"><p>${item.price}</p></h2><h2 class="tprice"><p>${(item.price*item.qty).toFixed(2)}</p></h2><h2 class="remove">&times;</h2>`)
        // console.log(box);
         // var carlist=document.getElementById('carlist');
         var $carlist=$('#carlist');
@@ -138,9 +139,9 @@
            });
             total=total.toFixed(2);
            $cartotal.html(total);
-           var now =new Date();
-            now.setDate(now.getDate()+7)
-            cookie.set('sum',sum,now,'/');
+           // var now =new Date();
+           //  now.setDate(now.getDate()+7)
+           //  cookie.set('sum',total,now,'/');
         }
     })
 })(jQuery);

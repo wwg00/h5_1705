@@ -1,14 +1,7 @@
 ;(function($){
    $(function(){
     //load后回调不一定加载完??先用延时器;
-      $('.header').load('../html/header.html',function(){
-        setTimeout(function(){
-            $('.goodimg').gdsZoom({position:'right',gap:30});
-            $('.gds-zoom-big').css({top:170});
-        }, 50)
-          
-     
-      });
+      
       $('.footer').load('../html/footer.html');
       // $('.state').html(``)
       
@@ -28,14 +21,27 @@
       var price='';
       var name='';
       $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
-
+          $('.header').load('../html/header.html',function(){
+            //ajax回调后再加载??
+            $('.goodimg').gdsZoom({position:'right',gap:30});
+            $('.gds-zoom-big').css({top:170});
+       
+          
+     
+      });
            data.forEach(function(item){
                if(item.id==id){
                 // console.log(item.id);
                    $('.goodimg').html(`<img src="../${item.img}" data-big="../${item.img}"  />`);
+                   $('.smallList').html(`<img src="../${item.img}" >
+        <img src="../img/g7.jpg" alt="">
+        <img src="../img/g8.jpg" alt="">
+        <img src="../img/g9.jpg" alt="">
+        <img src="../img/g10.jpg" alt="">`)
                    right(item);
                    qtybtn();
-                   img=item.img;
+                   imgurl=item.img;
+                   // console.log(img);
                    price=item.price;
                    name=item.name;
 
@@ -145,20 +151,21 @@
                              
                             }
                             if(!res){
-                              val.unshift({id:id,qty:count,price:price,img:img,name:name});
+                              val.unshift({id:id,qty:count,price:price,img:imgurl,name:name});
 
                             }
    
                            val=JSON.stringify(val);
                         }else{
-                            var val=JSON.stringify([{id:id,qty:count,price:price,img:img,name:name}]);
+                            var val=JSON.stringify([{id:id,qty:count,price:price,img:imgurl,name:name}]);
+                            // console.log(img);
                         }
                         
                          var now= new Date();
                          
                          now.setDate(now.getDate()+7);
 
-                         console.log(now);
+                         console.log(img);
                         cookie.set('good',val,now,'/');
                     } 
                 }); 
@@ -168,6 +175,16 @@
 
       });
 
+       $('.smallList').on('mouseover','img',function(){
+          // var $copy=$(this).clone();
+          //  $('.goodimg').html($copy);
+          //  $copy.attr('data-big',this.src);
+
+           $('.goodimg img').attr({
+          'src':this.src,
+          'data-big':$(this).attr('data-big') || this.src
+        });
+       })
        
        
    })
