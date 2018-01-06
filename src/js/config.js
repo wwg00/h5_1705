@@ -7,11 +7,13 @@ require.config({
 		'jquery':'../lib/jquery-3.2.1',
 		
 		'gdszoom':'../lib/jquery-gdsZoom/jquery.gdsZoom',
-		'fly':'../lib/jquery.fly.min'
+		'fly':'../lib/jquery.fly.min',
+		'carousel':'../lib/jquery-lxCarousel/jquery.lxCarousel'
 	},
 	shim:{
 		// 设置依赖
 		gdszoom:['jquery'],
-		fly:['jquery']
+		fly:['jquery'],
+		carousel:['jquery']
 	}
 });

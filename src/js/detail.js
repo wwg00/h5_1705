@@ -20,7 +20,9 @@ require(['config'],function(){
       var img='';
       var price='';
       var name='';
-      $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
+      $.ajax({type:'get',url:'../api/list.php',success:function(totaldata){
+        var totaldata=JSON.parse(totaldata);
+          var data=totaldata.data;
           $('.header').load('../html/header.html',function(){
             //ajax回调后再加载??
             $('.goodimg').gdsZoom({position:'right',gap:30});

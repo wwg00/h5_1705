@@ -55,7 +55,7 @@
 
                adcount.innerHTML=count;
                 adult.onclick=function(){  
-                     console.log(333);
+                     // console.log(333);
                 count++;  
                 adcount.innerHTML=count;  
                 // date.qty=count;
@@ -68,7 +68,7 @@
                 sum();
                 }
                   adco.onclick=function(){ 
-                    console.log(55); 
+                    // console.log(55); 
                 if(count>0){
                 
                    count--;  
@@ -95,7 +95,7 @@
        function remove(){
           var $remove=$('.remove');
         $remove.click(function(){
-            console.log(3);
+            // console.log(3);
             // console.log();
             $(this).parent().remove();
             var id=$(this).parent().attr('id');
@@ -116,7 +116,7 @@
        
         //点击数量按钮修改cookie的good: qty;
         function qty(item,id){
-            console.log(333);
+            // console.log(333);
             val.forEach(function(item,idx){
                 if(item.id==id){
                      val[idx].qty=count;

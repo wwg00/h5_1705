@@ -1,19 +1,26 @@
  (function($){
     $(function(){
-            console.log(333);
+            // console.log(333);
           $('.header').load('../html/header.html');
          $('.footer').load('../html/footer.html');
 
          
-    });
-
     
+
+       
  //写入数据;
-        $(function(){
+        
                     var goodlist;
-                    $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
-                        console.log($('.carlist>li'));
+                    var totalqty;
+                function listdata(){
+
+
+                    $.ajax({type:'get',url:'../api/list.php?qty=10&pageNo='+pageNo,success:function(totaldata){
+                        // console.log(8888);
+                        var totaldata=JSON.parse(totaldata);
+                        var data=totaldata.data;
                           goodlist=data;
+                          totalqty=totaldata.total;
                         $('.carlist>li').each(function(i){
                              $(this).attr('id',data[i].id);
                              //deenter用于点击事件detail入口;
@@ -97,13 +104,34 @@
              $('.carlist').on('click','li .deenter',function(){
                    location.href="../html/detail.html?id="+$(this).parents('li').attr('id');
               });
+
+                 //获取全部页数;
+                 $('.page').html('');
+                 for(var i=0;i<Math.ceil(totalqty/totaldata.qty);i++){
+                     $('<span/>').html(i+1).appendTo('.page');
+                     
+                 }
+                   $('.page').children().eq(pageNo-1).css('background','blue').siblings().css('background','#58bc58');
+                  
                     }
+
+
                 });
+           }
 
+            var pageNo=1;
+            listdata();
+           //分页显示;
+              
+              
+               $('.page').on('click','span',function(){
+                   pageNo=$(this).html();
+                   listdata();
+                   // $(this).css('background','blue');
+                   // $(this).siblings().css('background','#58bc58');
+                   // $('.page').children().eq(0).css('background','blue');
+               })
 
-
-        });
-
-                    
+        });                
     
 })(jQuery);

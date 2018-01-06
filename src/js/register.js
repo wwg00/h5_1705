@@ -4,28 +4,26 @@
 
 
     var result;
-   $.get({
-          url: '../api/data/username.json',
-          success: function(data){
-               
-               result=data;
-              
-                }
-              });
+     var username;
     // $('.header').load('../html/header.html');
     $('.footer').load('../html/footer.html');
     var res=[false];
     $('#username').blur(function(){
-        // console.log(333);
-        var $val=$('#username').val();
+        console.log(333);
+        username=$('#username').val();
         var reg=/^[a-z][\da-z\-]{5,19}$/i;
-        if(!reg.test($val)){
+        if(!reg.test(username)){
             $('#tip').html('&times;用户名格式不对');
             res[1]=false;
         }else{
-             
-             result.forEach(function(item){
-                 if(item.name==$val){
+             $.get({
+          url: `../api/register.php?rest=false&username=${username}`,
+          success: function(data){
+               
+               result=data;
+               console.log(result);
+
+               if(result=='fail'){
                
                     $('#tip').html('&times;名字已被使用');
                     console.log($('#tip').html());
@@ -33,7 +31,12 @@
                  }else{
                     res[1]=true;
                  }
-               })
+              
+                }
+              });
+              
+                 
+               
          
      
           
@@ -88,16 +91,26 @@
         //      $('#confirm_pwd').val('');
         // });
      });
+
       $('button').click(function(){
-        var rest=true;
+           var rest=true;
            for(var i=0;i<res.length;i++){
               if(!res[i]){
                  rest=false;
               }
            }
+          
            if(rest){
-            // console.log(res);
+                  console.log(res);
+             $.get({
+          url: '../api/register.php?'+'rest='+true+'&username='+username,
+          success: function(data){       
+               result=data;
+               // console.log(result);
              location.href="../html/enter.html";
+               
+                }
+              });
             
            }
        

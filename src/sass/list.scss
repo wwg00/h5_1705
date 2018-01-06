@@ -7,6 +7,23 @@ html,body{
     background:#F5345E;
     padding:20px;
     min-width:1090px;
+    .page{
+        
+        // width: 318px;
+        height:50px;
+        margin-left:30px;
+        margin-top:10px;
+        span{
+            background:#58bc58;
+            width: 50px;
+            text-align:center;
+            display:inline-block;
+            color:#d22147;
+            font-size:28px;
+            line-height:50px;
+            
+        }
+    }
     .carlist{
         margin:0 auto;
         li{

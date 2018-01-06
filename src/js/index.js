@@ -1,22 +1,26 @@
-  (function($){
-    $(function(){
-            console.log(333);
-          $('.header').load('html/header.html');
+
+
+require(['config'],function(){
+    require(['jquery','carousel','common','fly'],function(){
+           $('.header').load('html/header.html');
          $('.carousel').lxCarousel({imgs:['img/g1.jpg','img/g2.jpg','img/g3.jpg','img/g4.jpg'],width:1920,height:400,type:'fade',buttons:true});
          $('.footer').load('html/footer.html');
 
          
-    });
+   
 
     
  //写入数据;
-        $(function(){
+       
                    //goodlist获取数据;
                     var goodlist;
-                    $.ajax({type:'get',url:'../api/data/list.json',success:function(data){
-                        console.log($('.carlist>li'));
-                       goodlist=data;
+                    $.ajax({type:'get',url:'../api/list.php?qty=20&pageNo=1',success:function(totaldata){
+                        // console.log($('.carlist>li'));
+                        var totaldata=JSON.parse(totaldata);
+                        var data=totaldata.data;
+                         goodlist=data;
                         $('.carlist>li').each(function(i){
+                            // console.log(data[i].id);
                              $(this).attr('id',data[i].id);
                              //deenter用于点击事件detail入口;
                              $(this).html('<a class="deenter"><img src="'+data[i].imgurl+'"  alt="" class="listicon"/><img src="'+data[i].img+'" alt="" class="proImg"/></a><div class="proinfo"><h3><a href="" class="tit"> '+data[i].name+'</a><a href="" class="red">清爽去污</a></h3><p>包邮</p><div class="price">$'+data[i].price+'</div><a  class="buy buybtn">加入购物车</a></div>')
@@ -103,7 +107,5 @@
                     }
                 });
         });
-
-                    
     
-})(jQuery);
+})

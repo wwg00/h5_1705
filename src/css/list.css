@@ -2,6 +2,10 @@ html, body { width: 100%; }
 
 .list { background: #F5345E; padding: 20px; min-width: 1090px; }
 
+.list .page { height: 50px; margin-left: 30px; margin-top: 10px; }
+
+.list .page span { background: #58bc58; width: 50px; text-align: center; display: inline-block; color: #d22147; font-size: 28px; line-height: 50px; }
+
 .list .carlist { margin: 0 auto; }
 
 .list .carlist li { float: left; background: #fff; margin: 2px; height: 300px; width: 197px; padding: 14px; }
