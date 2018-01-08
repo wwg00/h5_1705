@@ -105,7 +105,7 @@ require(['config'],function(){
                             /*------------------------------------------*/
 
                              //获取购物车信息;
-              var data;
+      /*        var data;
               $.get({url:`../api/cart.php?username=${sessionStorage.getItem('username')}`,success:function(cartdata){
                     data=JSON.parse(cartdata);
                     // console.log(data[0].username);
@@ -137,13 +137,24 @@ require(['config'],function(){
 
 
             }})
-                          
-                                
+               */           
+                                /*------------------------------------*/ 
+                       $.get({url:`../api/cart.php?username=${sessionStorage.getItem('username')}`,success:function(cartdata){
+                          data=JSON.parse(cartdata);
+                         data[0].cartlist+=','+id;
+                         $.get({url:'../api/save.php?username='+sessionStorage.getItem('username')+'&cartlist='+data[0].cartlist,success:function(data){
+                                       // data=JSON.parse(data);
+                                          console.log(data); 
+                                    }});
+
+                 }});    
+
+                    /*----------------------------------------*/ 
                             } 
                         }); 
                     });
 
-                    /*------------------------------------*/ 
+                   
 
                     $('.carlist').on('click','li .deenter',function(){
                            location.href="html/detail.html?id="+$(this).parents('li').attr('id');

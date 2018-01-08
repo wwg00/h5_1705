@@ -8,7 +8,10 @@
      if($result->num_rows>0){
         $sql = "update cart set cartlist='$cartlist' where username='$username'";
         $result=$conn->query($sql);
-        
+         $row=$result->fetch_all(MYSQLI_ASSOC);
+        //释放查询结果集;
+            $result->close();
+        echo json_encode($row,JSON_UNESCAPED_UNICODE);
      }else{
         echo 'fail';
      }

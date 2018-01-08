@@ -9,57 +9,75 @@
              var count; 
 
          //读取cookie;
-         var val=JSON.parse(cookie.get('good'));
-         // var val=[];
+         // var val=JSON.parse(cookie.get('good'));
+         var val=[];
+          var str=[];
+           var vall=[];
+          var count=[];
          // var val=JSON.parse(cookie.get(sessionStorage.getItem('username')+'carlist'));
-         // $.get({url:'../api/cart.php?username='+sessionStorage.getItem('username'),success:function(data){
-         //     data=JSON.parse(data);
-         //     console.log(data[0].cartlist);
-         //     var cartarray=data[0].cartlist.split(',');
-         //     // console.log(cartarray);
-         //     var ids=JSON.stringify(data[0].cartlist);
-         //     console.log(ids);
-         //     $.get({url:'../api/cartlist.php?ids='+ids,success:function(data){
-         //            data=JSON.parse(data);
+         $.get({url:'../api/cart.php?username='+sessionStorage.getItem('username'),success:function(data){
+             data=JSON.parse(data);
+             // console.log(data[0].cartlist);
+             var cartarray=data[0].cartlist.split(',');
+             // console.log(cartarray);
+             var ids=JSON.stringify(data[0].cartlist);
+             // console.log(ids);
+             $.get({url:'../api/cartlist.php?ids='+ids,success:function(data){
+                    data=JSON.parse(data);
                     
-         //            data.forEach(function(item){
-         //                  val.push(item[0]);
+                    data.forEach(function(item){
+                          val.push(item[0]);
 
-         //            })
-         //            val=val.slice(1); 
-         //            // console.log(val);
-         //            var str=[];
-         //            var count=[];
-         //            // var i=0;
-         //            val.forEach(function(item){
-         //              // console.log(item.id);
-         //                var i=str.indexOf(item.id);
-         //                if(i>0){
-         //                    count[i]++;  
-         //                }else{
-         //                   str.push(item.id);
-         //                }
-         //            })
-         //            console.log(str);
-         //     }})
-         // }})
-         console.log(val);
-         val.forEach(function(item){
+                    })
+                    val=val.slice(1); 
+                    // console.log(data);
+                   
+                    var i;
+                   
+                    val.forEach(function(item,idx){
+                      // console.log(item.id);
+                      
+                         i=str.indexOf(item.id);
+                          console.log(i);
+                        if(i>=0){
+                            count[i]++;
+                            vall[i].qty++;
+                            // val.splice(idx,1); 
+                        }else{
+                           str.push(item.id);
+                           vall[str.length-1]=val[idx];
+                           vall[str.length-1].qty=1;
+                          
+                           count[str.length-1]=1;
+                        }
 
-              setbox(item);
-         });
-         remove();
+                    });
+                       console.log(vall);
+                        readcart(vall);
+                        sum();
+                    // console.log(str);
+             }})
+         }})
+         function readcart(vall){
+         
+
+           vall.forEach(function(item){
+
+                setbox(item);
+           });
+           remove();
+         }
            
        function setbox(item){
-
+          
            var $box=$('<div/>');
            $box.addClass('box');
            $box.attr('id',item.id);
             // var box=document.createElement('div');
         var $total=$('.total');
          // var total=document.getElementsByClassName('total')[0];
-        
-       $box.html(`<img src="../${item.img}" ><div><h4>${item.name}</h4><p>ID:${item.id}</p><P>Size:Default</P></div><p class="btngroup"><button    class="btn1 button" ><strong>+</strong></button><button class="btn2 button" ><strong>0</strong></button><button class="btn3 button"  >-</button>  </p><h2 class="price"><p>${item.price}</p></h2><h2 class="tprice"><p>${(item.price*item.qty).toFixed(2)}</p></h2><h2 class="remove">&times;</h2>`)
+      
+       $box.html(`<img src="../${item.img}" ><div><h4>${item.name}</h4><p>ID:${item.id}</p><P>Size:Default</P></div><p class="btngroup"><button    class="btn1 button" ><strong>+</strong></button><button class="btn2 button" ><strong>${item.qty}</strong></button><button class="btn3 button"  >-</button>  </p><h2 class="price"><p>${item.price}</p></h2><h2 class="tprice"><p>${(item.price*item.qty).toFixed(2)}</p></h2><h2 class="remove">&times;</h2>`)
        // console.log(box);
         // var carlist=document.getElementById('carlist');
         var $carlist=$('#carlist');
@@ -133,9 +151,9 @@
             $(this).parent().remove();
             var id=$(this).parent().attr('id');
 
-            val.forEach(function(item,idx){
+            vall.forEach(function(item,idx){
                 if(item.id==id){
-                    val.splice(idx,1);
+                    vall.splice(idx,1);
                 }
             });
             // cookie.remove('good');
@@ -143,6 +161,19 @@
             now.setDate(now.getDate()+7)
             cookie.set('good',JSON.stringify(val),now,'/');
            sum();
+           /*---------------------------------------------*/
+               console.log(type(str));
+                i=str.indexOf(id)
+
+                console.log(str);
+                str.splice(i,1);
+                cartlistid=str.join(',');
+               $.get({url:'../api/save.php?username='+sessionStorage.getItem('username')+'&cartlist='+cartlistid,success:function(data){
+                                       
+                                    }});
+
+           /*----------------------------------------------*/
+
 
         }) 
        }
@@ -150,7 +181,7 @@
         //点击数量按钮修改cookie的good: qty;
         function qty(item,id){
             // console.log(333);
-            val.forEach(function(item,idx){
+            vall.forEach(function(item,idx){
                 if(item.id==id){
                      val[idx].qty=count;
                 }
@@ -159,6 +190,21 @@
             var now =new Date();
             now.setDate(now.getDate()+7)
             cookie.set('good',JSON.stringify(val),now,'/');
+
+            /*---------------------------------------------*/
+               
+                
+                
+                str.push(id);
+                cartlistid=str.join(',');
+               $.get({url:'../api/save.php?username='+sessionStorage.getItem('username')+'&cartlist='+cartlistid,success:function(data){
+                                       // data=JSON.parse(data);
+                                          console.log(data); 
+                                    }});
+
+           /*----------------------------------------------*/
+
+            
         }
 
         //商品总价;
@@ -166,7 +212,8 @@
         sum();
         function sum(){
             var total=0;
-           val.forEach(function(item){
+
+           vall.forEach(function(item){
                 total+=item.qty*item.price;
                  
                
