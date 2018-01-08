@@ -15,6 +15,7 @@
            var vall=[];
           var count=[];
          // var val=JSON.parse(cookie.get(sessionStorage.getItem('username')+'carlist'));
+         // 先通过api接口去数据库cart表读取当前用户的cartlist;然后用cartlist再去list表对照拿去商品具体信息;(由于在接口没有给同一商品统计数量,所以这里要统计数量并去重);
          $.get({url:'../api/cart.php?username='+sessionStorage.getItem('username'),success:function(data){
              data=JSON.parse(data);
              // console.log(data[0].cartlist);
@@ -37,10 +38,11 @@
                     val.forEach(function(item,idx){
                       // console.log(item.id);
                       
+                        //将从list表传递过来的商品统计各种商品的qty,去重;
                          i=str.indexOf(item.id);
                           console.log(i);
                         if(i>=0){
-                            count[i]++;
+                            // count[i]++;
                             vall[i].qty++;
                             // val.splice(idx,1); 
                         }else{
@@ -48,7 +50,7 @@
                            vall[str.length-1]=val[idx];
                            vall[str.length-1].qty=1;
                           
-                           count[str.length-1]=1;
+                           // count[str.length-1]=1;
                         }
 
                     });

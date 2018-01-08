@@ -35,7 +35,7 @@
             
             $(".buybtn").click(function(event){ 
 
-                //找到id;
+                //找到当前商品id;
                 var good;
                 var id=$(this).parents('li').attr('id');
                  goodlist.forEach(function(item){
@@ -133,6 +133,7 @@
 
             // }})
                         /*--------------------------------------------*/
+                        //写在回调函数中;点击购买后去数据库cart表获取当前用户购物车商品信息,在重新用接口写入数据库;
                  $.get({url:`../api/cart.php?username=${sessionStorage.getItem('username')}`,success:function(cartdata){
                           data=JSON.parse(cartdata);
                          data[0].cartlist+=','+id;
