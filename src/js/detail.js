@@ -1,7 +1,7 @@
 
 
 require(['config'],function(){
-  require(['jquery','fly','gdszoom','common'],function($){
+  require(['jquery','fly','gdszoom','common','header'],function($){
     $('.footer').load('../html/footer.html');
       // $('.state').html(``)
       
@@ -116,7 +116,7 @@ require(['config'],function(){
             $(".buybtn").click(function(event){ 
                 
                  var btnLeft = $(this).offset().left ; 
-　　　　　　  var btnTop = $(this).offset().top- $(document).scrollTop();
+　　　　　　    var btnTop = $(this).offset().top- $(document).scrollTop();
                 var addcar = $(this); 
                 var img = addcar.parents('.detailbox').find('.goodimg img').attr('src'); 
                 var flyer = $('<img class="u-flyer" src="'+img+'">'); 
@@ -169,6 +169,47 @@ require(['config'],function(){
 
                          console.log(img);
                         cookie.set('good',val,now,'/');
+
+                        /*----------------------------------------------*/
+                          
+                          
+                                              //获取购物车信息;
+              var data;
+              $.get({url:`../api/cart.php?username=${sessionStorage.getItem('username')}`,success:function(cartdata){
+                    data=JSON.parse(cartdata);
+                    console.log(sessionStorage.getItem('username'));
+                 if(data[0].username){
+
+                    var now=new Date();
+                    now.setDate(now.getDate()+7)
+                    cookie.set(sessionStorage.getItem('username')+'carlist',data[0].cartlist,now,'/');
+
+                 }
+                        val=JSON.parse(val);
+                                var idsum=[];
+                                 console.log(val);
+
+                                val.forEach(function(item){
+                                    for(var i=0;i<item.qty;i++){
+
+                                         idsum.unshift(item.id);
+                                    }
+                                })
+
+                                    data[0].cartlist+=','+idsum.join(',');
+                                    var now=new Date();
+                                    now.setDate(now.getDate()+7);
+                                    cookie.set(sessionStorage.getItem('username')+'carlist',data[0].cartlist,now,'/');
+                                    $.get({url:'../api/save.php?username='+sessionStorage.getItem('username')+'&cartlist='+data[0].cartlist,success:function(data){
+                                          // console.log(data); 
+                                    }});
+
+
+            }})
+
+
+
+                        /*-----------------------------------------------*/
                     } 
                 }); 
             });

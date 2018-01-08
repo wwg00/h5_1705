@@ -14,6 +14,7 @@ require.config({
 		// 设置依赖
 		gdszoom:['jquery'],
 		fly:['jquery'],
-		carousel:['jquery']
+		carousel:['jquery'],
+		header:['jquery']
 	}
 });

@@ -1,7 +1,7 @@
  
 
  require(['config'],function(){
-      require(['jquery','common'],function($){
+      require(['jquery','common','header'],function($){
             $('.footer').load('../html/footer.html');
         $('.header').load('../html/header.html');
 
@@ -9,8 +9,41 @@
              var count; 
 
          //读取cookie;
-         var val=JSON.parse(cookie.get('good'));
-         console.log(val);
+         // var val=JSON.parse(cookie.get('good'));
+         var val=[];
+         // var val=JSON.parse(cookie.get(sessionStorage.getItem('username')+'carlist'));
+         $.get({url:'../api/cart.php?username='+sessionStorage.getItem('username'),success:function(data){
+             data=JSON.parse(data);
+             console.log(data[0].cartlist);
+             var cartarray=data[0].cartlist.split(',');
+             // console.log(cartarray);
+             var ids=JSON.stringify(data[0].cartlist);
+             console.log(ids);
+             $.get({url:'../api/cartlist.php?ids='+ids,success:function(data){
+                    data=JSON.parse(data);
+                    
+                    data.forEach(function(item){
+                          val.push(item[0]);
+
+                    })
+                    val=val.slice(1); 
+                    // console.log(val);
+                    var str=[];
+                    var count=[];
+                    // var i=0;
+                    val.forEach(function(item){
+                      console.log(item);
+                        var i=str.indexOf(item.id);
+                        if(i>0){
+                            count[i]++;  
+                        }else{
+                           str.push(item[0].id);
+                        }
+                    })
+                    console.log(str);
+             }})
+         }})
+         // console.log(val);
          val.forEach(function(item){
 
               setbox(item);

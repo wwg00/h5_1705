@@ -5,6 +5,7 @@
 
     var result;
      var username;
+     // var password;
     // $('.header').load('../html/header.html');
     $('.footer').load('../html/footer.html');
     var res=[false];
@@ -30,15 +31,13 @@
                  res[1]=false;
                  }else{
                     res[1]=true;
+                     $('#tip').html('');
                  }
               
                 }
               });
               
-                 
-               
-         
-     
+ 
           
         }
         // $('#username').focus(function(){
@@ -55,6 +54,7 @@
             res[2]=false;
         }else{
             res[2]=true;
+            $('#tip').html('');
         }
         // $('#phone').focus(function(){
         //      $('#tip').html('');
@@ -71,6 +71,7 @@
             res[0]=false;
         }else{
             res[0]=true;
+            $('#tip').html('');
         }
         // $('#password').focus(function(){
         //      $('#tip').html('');
@@ -85,6 +86,7 @@
             res[3]=false;
         }else{
             res[3]=true;
+            $('#tip').html('');
         }
         // $('#confirm_pwd').focus(function(){
         //      $('#tip').html('');
@@ -103,18 +105,29 @@
            if(rest){
                   console.log(res);
              $.get({
-          url: '../api/register.php?'+'rest='+true+'&username='+username,
+          url: '../api/register.php?'+'rest='+true+'&username='+username+'&password='+$('#password').val(),
           success: function(data){       
                result=data;
                // console.log(result);
-             location.href="../html/enter.html";
+               // 
+               //注册购物车;
+            $.get({url:'../api/setcart.php?'+'username='+username,success:function(data){
+                 // console.log(data);
+              location.href="../html/enter.html";
+                 
+            }});
                
                 }
               });
+
+             
+
             
            }
        
       });
+        
+
 
 
   })
